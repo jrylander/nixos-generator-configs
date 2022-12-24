@@ -15,6 +15,13 @@
         ];
         format = "proxmox-lxc";
       };
+      syncnix = nixos-generators.nixosGenerate {
+        system = "x86_64-linux";
+        modules = [
+          ./syncnix.nix
+        ];
+        format = "proxmox-lxc";
+      };
     };
   };
 }
