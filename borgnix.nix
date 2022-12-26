@@ -3,13 +3,8 @@
 {
   imports = [
     (modulesPath + "/virtualisation/proxmox-lxc.nix")
+    ./common.nix
   ];
-
-  services.sshd.enable = true;
-
-  users.users.root.password = "nixos";
-  services.openssh.permitRootLogin = lib.mkDefault "yes";
-  services.getty.autologinUser = lib.mkDefault "root";
 
   services.borgbackup.repos = {
     nuc = {
@@ -31,11 +26,4 @@
       path = "/borg/repos/syncthing-server" ;
     };
   };
-
-
-  environment.systemPackages = with pkgs; [
-    neovim
-  ];
-
-  system.stateVersion = "22.11";
 }
