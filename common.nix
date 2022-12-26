@@ -2,9 +2,11 @@
 
 {
   networking.nameservers = [ "172.16.1.1" ];
+  services.resolved.enable = true;
+  services.resolved.dnssec = "false";
 
-  services.sshd.enable = true;
   users.users.root.password = "nixos";
+  services.sshd.enable = true;
   services.openssh.permitRootLogin = lib.mkDefault "yes";
   services.openssh.passwordAuthentication = false;
   services.getty.autologinUser = lib.mkDefault "root";
